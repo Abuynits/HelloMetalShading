@@ -4,12 +4,8 @@ class GameView: MTKView{
     var commandQueue: MTLCommandQueue!
     var renderPipelineState: MTLRenderPipelineState!
     
-    //create vertex array:
-    let vertices: [SIMD3<Float>] = [
-        SIMD3<Float>(0,1,0),//top middle
-        SIMD3<Float>(-1,-1,0),//bottom right
-        SIMD3<Float>(1,-1,0)//bottom left
-    ]
+    //create vertex array: (cant create on the fly- need to have function)
+    var vertices: [Vertex]!//! is an optional - dont have to define here
     //create unistantiated vertex buffer
     var vertexBuffer: MTLBuffer!
     
@@ -32,17 +28,26 @@ class GameView: MTKView{
         self.colorPixelFormat = .bgra8Unorm
         
         createRenderPipelineState()
+        createVertices()
         createBuffer()
+    }
+    func createVertices(){//want to call this before we make the buffers
+        vertices = [
+            Vertex(position: SIMD3<Float>(0,1,0), color: SIMD4<Float>(1,0,0,1)),
+        Vertex(position: SIMD3<Float>(-1,-1,0), color: SIMD4<Float>(0,1,0,1)),
+        Vertex(position: SIMD3<Float>(1,-1,0), color: SIMD4<Float>(0,0,1,1))
+        ]
     }
     func createBuffer(){
         //need device to make objects
         //bytes are the vertices
         //length use the memory layout of SIMD3
         //options - memory shared functionality - how shared between cpu and gpu
-        vertexBuffer = device?.makeBuffer(bytes: vertices, length: vertices.count*MemoryLayout<SIMD3<Float>>.stride, options: [])
+        vertexBuffer = device?.makeBuffer(bytes: vertices, length: Vertex.stride(vertices.count), options: [])//32 bytes- 32*coutn = 32*3
     }
     func createRenderPipelineState(){
         //need libary
+        
         let library = device?.makeDefaultLibrary()
         //can put on code
         //instantiatign vertex and fragment functions
@@ -51,6 +56,24 @@ class GameView: MTKView{
         let fragmentFunction = library?.makeFunction(name: "basic_fragment_shader")
         // now make the pipieline state descriptor
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
+        
+        let vertexDescriptor = MTLVertexDescriptor() //basic object - set render pipeline vertex descripto to this one
+        //first attribute represented by position (0 -index)
+       
+        //attributes at 0 (setting up the position
+        
+        vertexDescriptor.attributes[0].format = .float3//TODO: need to change all values of SIMD to float3 and float4
+        vertexDescriptor.attributes[0].bufferIndex = 0//buffer index is 0
+        vertexDescriptor.attributes[0].offset = 0 // where exactly is inside of the struct ( is 0).
+        //flaot 4 ( the color) will have an offset of float3
+        
+        vertexDescriptor.attributes[1].format = .float4//set to float 4
+        vertexDescriptor.attributes[1].bufferIndex = 0//still at buffer 0
+        vertexDescriptor.attributes[1].offset = MemoryLayout<SIMD3<Float>>.size//offset is float3
+        //how the pipeline state describes our thing - our stride with float 3 and float 4, use stride of vertex to describe it
+        
+        vertexDescriptor.layouts[0].stride = Vertex.stride()//knows this from Types
+        renderPipelineDescriptor.vertexDescriptor=vertexDescriptor
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         renderPipelineDescriptor.vertexFunction = vertexFunction
         renderPipelineDescriptor.fragmentFunction = fragmentFunction

@@ -16,6 +16,7 @@
 		E8C13AC8276FE8A3002A8D54 /* GameEngineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AC7276FE8A3002A8D54 /* GameEngineUITestsLaunchTests.swift */; };
 		E8C13AD6276FEAFA002A8D54 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AD5276FEAFA002A8D54 /* GameView.swift */; };
 		E8C13AD8276FF224002A8D54 /* myShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AD7276FF224002A8D54 /* myShader.metal */; };
+		E8C13ADA277066B2002A8D54 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AD9277066B2002A8D54 /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E8C13AC7276FE8A3002A8D54 /* GameEngineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E8C13AD5276FEAFA002A8D54 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		E8C13AD7276FF224002A8D54 /* myShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = myShader.metal; sourceTree = "<group>"; };
+		E8C13AD9277066B2002A8D54 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		E8C13A9A276FE8A1002A8D54 = {
 			isa = PBXGroup;
 			children = (
+				E8C13AD9277066B2002A8D54 /* Types.swift */,
 				E8C13AA5276FE8A1002A8D54 /* GameEngine */,
 				E8C13ABA276FE8A3002A8D54 /* GameEngineTests */,
 				E8C13AC4276FE8A3002A8D54 /* GameEngineUITests */,
@@ -268,6 +271,7 @@
 				E8C13AD8276FF224002A8D54 /* myShader.metal in Sources */,
 				E8C13AAC276FE8A1002A8D54 /* GameEngine.xcdatamodeld in Sources */,
 				E8C13AD6276FEAFA002A8D54 /* GameView.swift in Sources */,
+				E8C13ADA277066B2002A8D54 /* Types.swift in Sources */,
 				E8C13AA7276FE8A1002A8D54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
