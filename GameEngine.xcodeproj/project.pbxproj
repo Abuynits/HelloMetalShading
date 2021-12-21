@@ -17,6 +17,12 @@
 		E8C13AD6276FEAFA002A8D54 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AD5276FEAFA002A8D54 /* GameView.swift */; };
 		E8C13AD8276FF224002A8D54 /* myShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AD7276FF224002A8D54 /* myShader.metal */; };
 		E8C13ADA277066B2002A8D54 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AD9277066B2002A8D54 /* Types.swift */; };
+		E8C13AE12772453A002A8D54 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AE02772453A002A8D54 /* Engine.swift */; };
+		E8C13AE3277246E2002A8D54 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AE2277246E2002A8D54 /* Preference.swift */; };
+		E8C13AE62772491A002A8D54 /* ShaderLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AE52772491A002A8D54 /* ShaderLibrary.swift */; };
+		E8C13AE827725167002A8D54 /* VertexDescriptorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AE727725167002A8D54 /* VertexDescriptorLibrary.swift */; };
+		E8C13AEA277261B3002A8D54 /* RenderPipelineDescriptorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AE9277261B3002A8D54 /* RenderPipelineDescriptorLibrary.swift */; };
+		E8C13AEE2772666F002A8D54 /* RenderPipelineStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AED2772666F002A8D54 /* RenderPipelineStateLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		E8C13AD5276FEAFA002A8D54 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		E8C13AD7276FF224002A8D54 /* myShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = myShader.metal; sourceTree = "<group>"; };
 		E8C13AD9277066B2002A8D54 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		E8C13AE02772453A002A8D54 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		E8C13AE2277246E2002A8D54 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		E8C13AE52772491A002A8D54 /* ShaderLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderLibrary.swift; sourceTree = "<group>"; };
+		E8C13AE727725167002A8D54 /* VertexDescriptorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexDescriptorLibrary.swift; sourceTree = "<group>"; };
+		E8C13AE9277261B3002A8D54 /* RenderPipelineDescriptorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPipelineDescriptorLibrary.swift; sourceTree = "<group>"; };
+		E8C13AED2772666F002A8D54 /* RenderPipelineStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPipelineStateLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +93,6 @@
 		E8C13A9A276FE8A1002A8D54 = {
 			isa = PBXGroup;
 			children = (
-				E8C13AD9277066B2002A8D54 /* Types.swift */,
 				E8C13AA5276FE8A1002A8D54 /* GameEngine */,
 				E8C13ABA276FE8A3002A8D54 /* GameEngineTests */,
 				E8C13AC4276FE8A3002A8D54 /* GameEngineUITests */,
@@ -102,10 +113,11 @@
 		E8C13AA5276FE8A1002A8D54 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				E8C13AE427724908002A8D54 /* Libraries */,
+				E8C13ADD2771A92C002A8D54 /* Display */,
+				E8C13ADC2771A91C002A8D54 /* Shaders */,
+				E8C13ADB2771A903002A8D54 /* Core */,
 				E8C13AD4276FE8F9002A8D54 /* Other Files */,
-				E8C13AAF276FE8A3002A8D54 /* Main.storyboard */,
-				E8C13AD5276FEAFA002A8D54 /* GameView.swift */,
-				E8C13AD7276FF224002A8D54 /* myShader.metal */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -136,6 +148,44 @@
 				E8C13AAA276FE8A1002A8D54 /* GameEngine.xcdatamodeld */,
 			);
 			path = "Other Files";
+			sourceTree = "<group>";
+		};
+		E8C13ADB2771A903002A8D54 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E8C13AD9277066B2002A8D54 /* Types.swift */,
+				E8C13AE02772453A002A8D54 /* Engine.swift */,
+				E8C13AE2277246E2002A8D54 /* Preference.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E8C13ADC2771A91C002A8D54 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E8C13AD7276FF224002A8D54 /* myShader.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		E8C13ADD2771A92C002A8D54 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				E8C13AAF276FE8A3002A8D54 /* Main.storyboard */,
+				E8C13AD5276FEAFA002A8D54 /* GameView.swift */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		E8C13AE427724908002A8D54 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E8C13AE52772491A002A8D54 /* ShaderLibrary.swift */,
+				E8C13AE727725167002A8D54 /* VertexDescriptorLibrary.swift */,
+				E8C13AE9277261B3002A8D54 /* RenderPipelineDescriptorLibrary.swift */,
+				E8C13AED2772666F002A8D54 /* RenderPipelineStateLibrary.swift */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,11 +318,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8C13AEA277261B3002A8D54 /* RenderPipelineDescriptorLibrary.swift in Sources */,
+				E8C13AE827725167002A8D54 /* VertexDescriptorLibrary.swift in Sources */,
+				E8C13AE3277246E2002A8D54 /* Preference.swift in Sources */,
 				E8C13AD8276FF224002A8D54 /* myShader.metal in Sources */,
+				E8C13AE62772491A002A8D54 /* ShaderLibrary.swift in Sources */,
+				E8C13AE12772453A002A8D54 /* Engine.swift in Sources */,
 				E8C13AAC276FE8A1002A8D54 /* GameEngine.xcdatamodeld in Sources */,
 				E8C13AD6276FEAFA002A8D54 /* GameView.swift in Sources */,
 				E8C13ADA277066B2002A8D54 /* Types.swift in Sources */,
 				E8C13AA7276FE8A1002A8D54 /* AppDelegate.swift in Sources */,
+				E8C13AEE2772666F002A8D54 /* RenderPipelineStateLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
