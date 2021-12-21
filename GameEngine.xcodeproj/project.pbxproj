@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E80F893327727C8B00656165 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F893227727C8B00656165 /* GameObject.swift */; };
+		E80F893527727F9F00656165 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F893427727F9F00656165 /* Renderer.swift */; };
 		E8C13AA7276FE8A1002A8D54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AA6276FE8A1002A8D54 /* AppDelegate.swift */; };
 		E8C13AAC276FE8A1002A8D54 /* GameEngine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AAA276FE8A1002A8D54 /* GameEngine.xcdatamodeld */; };
 		E8C13AAE276FE8A3002A8D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C13AAD276FE8A3002A8D54 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E80F893227727C8B00656165 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = GameEngine/Libraries/GameObject.swift; sourceTree = SOURCE_ROOT; };
+		E80F893427727F9F00656165 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		E8C13AA3276FE8A1002A8D54 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C13AA6276FE8A1002A8D54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C13AAB276FE8A1002A8D54 /* GameEngine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameEngine.xcdatamodel; sourceTree = "<group>"; };
@@ -90,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E80F893127727C0D00656165 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				E80F893227727C8B00656165 /* GameObject.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		E8C13A9A276FE8A1002A8D54 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +125,7 @@
 		E8C13AA5276FE8A1002A8D54 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				E80F893127727C0D00656165 /* Game */,
 				E8C13AE427724908002A8D54 /* Libraries */,
 				E8C13ADD2771A92C002A8D54 /* Display */,
 				E8C13ADC2771A91C002A8D54 /* Shaders */,
@@ -173,6 +186,7 @@
 			children = (
 				E8C13AAF276FE8A3002A8D54 /* Main.storyboard */,
 				E8C13AD5276FEAFA002A8D54 /* GameView.swift */,
+				E80F893427727F9F00656165 /* Renderer.swift */,
 			);
 			path = Display;
 			sourceTree = "<group>";
@@ -323,9 +337,11 @@
 				E8C13AE3277246E2002A8D54 /* Preference.swift in Sources */,
 				E8C13AD8276FF224002A8D54 /* myShader.metal in Sources */,
 				E8C13AE62772491A002A8D54 /* ShaderLibrary.swift in Sources */,
+				E80F893527727F9F00656165 /* Renderer.swift in Sources */,
 				E8C13AE12772453A002A8D54 /* Engine.swift in Sources */,
 				E8C13AAC276FE8A1002A8D54 /* GameEngine.xcdatamodeld in Sources */,
 				E8C13AD6276FEAFA002A8D54 /* GameView.swift in Sources */,
+				E80F893327727C8B00656165 /* GameObject.swift in Sources */,
 				E8C13ADA277066B2002A8D54 /* Types.swift in Sources */,
 				E8C13AA7276FE8A1002A8D54 /* AppDelegate.swift in Sources */,
 				E8C13AEE2772666F002A8D54 /* RenderPipelineStateLibrary.swift in Sources */,
