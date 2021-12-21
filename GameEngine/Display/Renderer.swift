@@ -1,6 +1,8 @@
 import MetalKit
 class Renderer: NSObject{
-    var gameObject: GameObject = GameObject()
+
+    //each game object nees to be a node- need to create data structure where we can store many game objects that do not contain a mesh - not describe the node/position aspect of it - just mehs ( shape of object)
+    var player = Player()//can create 2 gametypes of2 different shapes - even calling game object is wierd
 }
 extension Renderer: MTKViewDelegate{
     
@@ -27,7 +29,7 @@ extension Renderer: MTKViewDelegate{
         //holds a lot of info - vertex function, fragment functions, color attachment
         //color attachment - pixel format: colorattachement[0] must match MSView(GameVIew)- need to set to .bgra8Unorm
         //vertex and fragment made with MTL library - it makes these fucntions, then stores in pipline descripton, vertex and fragment live in metal file
-        gameObject.render(renderCommandEncoder: renderCommandEncoder!)
+        player.render(renderCommandEncoder: renderCommandEncoder!)
         //need to stop render command encoder:
         renderCommandEncoder?.endEncoding()
         //need to present next drawable to screen

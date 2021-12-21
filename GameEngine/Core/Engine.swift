@@ -15,5 +15,6 @@ class Engine{
         VertexDescriptorLibrary.initialize()//init vertex descriptor library
         RenderPipelineDescriptorLibrary.initialize()//init render library
         RenderPipelineStateLibrary.initialize()//init the render state library
+        MeshLibrary.initialize()
     }
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		E80F893327727C8B00656165 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F893227727C8B00656165 /* GameObject.swift */; };
 		E80F893527727F9F00656165 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F893427727F9F00656165 /* Renderer.swift */; };
+		E80F89372772856900656165 /* MeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F89362772856900656165 /* MeshLibrary.swift */; };
+		E80F893927728D9000656165 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F893827728D9000656165 /* Player.swift */; };
+		E80F893B27728E9200656165 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F893A27728E9200656165 /* Node.swift */; };
+		E80F893E27728F3E00656165 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80F893D27728F3E00656165 /* Renderable.swift */; };
 		E8C13AA7276FE8A1002A8D54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AA6276FE8A1002A8D54 /* AppDelegate.swift */; };
 		E8C13AAC276FE8A1002A8D54 /* GameEngine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8C13AAA276FE8A1002A8D54 /* GameEngine.xcdatamodeld */; };
 		E8C13AAE276FE8A3002A8D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C13AAD276FE8A3002A8D54 /* Assets.xcassets */; };
@@ -45,8 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E80F893227727C8B00656165 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = GameEngine/Libraries/GameObject.swift; sourceTree = SOURCE_ROOT; };
+		E80F893227727C8B00656165 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = "GameEngine/Game/Game Objects/GameObject.swift"; sourceTree = SOURCE_ROOT; };
 		E80F893427727F9F00656165 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		E80F89362772856900656165 /* MeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLibrary.swift; sourceTree = "<group>"; };
+		E80F893827728D9000656165 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Player.swift; path = "GameEngine/Game/Game Objects/Player.swift"; sourceTree = SOURCE_ROOT; };
+		E80F893A27728E9200656165 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Node.swift; path = GameEngine/Game/Node.swift; sourceTree = SOURCE_ROOT; };
+		E80F893D27728F3E00656165 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		E8C13AA3276FE8A1002A8D54 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C13AA6276FE8A1002A8D54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C13AAB276FE8A1002A8D54 /* GameEngine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameEngine.xcdatamodel; sourceTree = "<group>"; };
@@ -97,9 +105,28 @@
 		E80F893127727C0D00656165 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				E80F893227727C8B00656165 /* GameObject.swift */,
+				E80F893A27728E9200656165 /* Node.swift */,
+				E80F893F27728FD300656165 /* Game Objects */,
+				E80F893C27728F2E00656165 /* Protocols */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		E80F893C27728F2E00656165 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E80F893D27728F3E00656165 /* Renderable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E80F893F27728FD300656165 /* Game Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E80F893227727C8B00656165 /* GameObject.swift */,
+				E80F893827728D9000656165 /* Player.swift */,
+			);
+			path = "Game Objects";
 			sourceTree = "<group>";
 		};
 		E8C13A9A276FE8A1002A8D54 = {
@@ -198,6 +225,7 @@
 				E8C13AE727725167002A8D54 /* VertexDescriptorLibrary.swift */,
 				E8C13AE9277261B3002A8D54 /* RenderPipelineDescriptorLibrary.swift */,
 				E8C13AED2772666F002A8D54 /* RenderPipelineStateLibrary.swift */,
+				E80F89362772856900656165 /* MeshLibrary.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -332,18 +360,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E80F893E27728F3E00656165 /* Renderable.swift in Sources */,
 				E8C13AEA277261B3002A8D54 /* RenderPipelineDescriptorLibrary.swift in Sources */,
 				E8C13AE827725167002A8D54 /* VertexDescriptorLibrary.swift in Sources */,
 				E8C13AE3277246E2002A8D54 /* Preference.swift in Sources */,
 				E8C13AD8276FF224002A8D54 /* myShader.metal in Sources */,
+				E80F89372772856900656165 /* MeshLibrary.swift in Sources */,
 				E8C13AE62772491A002A8D54 /* ShaderLibrary.swift in Sources */,
 				E80F893527727F9F00656165 /* Renderer.swift in Sources */,
 				E8C13AE12772453A002A8D54 /* Engine.swift in Sources */,
 				E8C13AAC276FE8A1002A8D54 /* GameEngine.xcdatamodeld in Sources */,
 				E8C13AD6276FEAFA002A8D54 /* GameView.swift in Sources */,
 				E80F893327727C8B00656165 /* GameObject.swift in Sources */,
+				E80F893B27728E9200656165 /* Node.swift in Sources */,
 				E8C13ADA277066B2002A8D54 /* Types.swift in Sources */,
 				E8C13AA7276FE8A1002A8D54 /* AppDelegate.swift in Sources */,
+				E80F893927728D9000656165 /* Player.swift in Sources */,
 				E8C13AEE2772666F002A8D54 /* RenderPipelineStateLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

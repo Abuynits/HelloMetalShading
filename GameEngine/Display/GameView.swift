@@ -20,7 +20,7 @@ class GameView: MTKView{
         //set the pixel format - need to match outf=put of fragment shader- will output a display image, ened to match image pixel format to our pixel format -  8 (most generic/msot used format)
         //can click on "colorPixelformat" to get library brings up the formats that exist and the sizes that they mean
         
-     
+      
         
         self.colorPixelFormat = Preference.mainPixelFormat
         
