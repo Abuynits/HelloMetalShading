@@ -34,3 +34,13 @@ class GameView: MTKView{
    
     
 }
+/*
+ theory of moving objects in screen space:
+ if want, can do manually - un realistic, hard to do
+ computational algorithms - very fast-matrix operations with formula in them
+ act as a operation
+ can take a 1x4, multiply by 4x4, we get a 1x4 matrix returned. collumn of first has to be equal to row of first. It goes out to 1x4 bc these are the other, remaining locations
+ 
+ location is a 1x4 coordinate - [x,y,z,a] by the move operation, get a new position- not need to do much, just say the amount that you want to move, we can also rotate and scale
+ - we can do these things sequentially
+ */

@@ -24,6 +24,9 @@ extension Renderer: MTKViewDelegate{
     // paralel command: able to render mutliple things at the same time - if want to render tecture and then turn into another tecture0 write two textures to the screeen.
         //use renderpass descriptor to instantiate comand encoder- renderpassdescriptor -has pixel/ buffer store infor ofr next job
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+        
+        player.update(deltaTime: 1/Float(view.preferredFramesPerSecond))//return 60fps
+        
         //set render command encoder render pipeline state
         //most important thing:
         //holds a lot of info - vertex function, fragment functions, color attachment

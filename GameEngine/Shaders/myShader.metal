@@ -18,18 +18,20 @@ struct RasterizerData{//same thing, but the position need to use the atrtibute q
     simd_float4 color;
     
 };
-
+struct modelConstants{
+    float4x4 modelMatrix;
+};
 
 
 //no longer need to take in array of vertices, just vertex
 //no longer device, jsut const
 // not use buffer at 0, just use stage_in - know size of the attributes
 //not need vertex id, just pass in vertex
-vertex RasterizerData basic_vertex_shader(const vertexIn vIn [[stage_in]]){
+vertex RasterizerData basic_vertex_shader(const vertexIn vIn [[stage_in]],constant modelConstants &modelConstants[[buffer(1)]]){
     //need to return 3 individual vertexes ( not whole array)
     //use another attribute tag - vertex id (tracks the backend vertex id)- instead of hardcoding:
     RasterizerData r;//create rasterizer data object
-    r.position=simd_float4(vIn.position,1);//populate position
+    r.position=modelConstants.modelMatrix * simd_float4(vIn.position,1);//populate position
     r.color= vIn.color;//add the same atributes - create fragments for each one
     //reasterizer - figure out what color it should be
     //at 0 return ptr of 0, then at 1, and then at 2- called per fragment as opposed to per vertex coding

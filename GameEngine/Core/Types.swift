@@ -24,4 +24,8 @@ struct Vertex: sizable{//vertex is a sizable object - polymorphism
 }
 //will extend on simd3 - does not work 
 extension SIMD3:sizable{}
+extension Float:sizable{}//float extend sizable
 
+struct ModelConstants: sizable{
+    var modelMatrix = matrix_identity_float4x4
+}
