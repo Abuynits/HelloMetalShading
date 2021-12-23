@@ -9,16 +9,16 @@ class GameObject: Node{
     init(meshType : MeshTypes){
         mesh = MeshLibrary.Mesh(meshType)
     }
-    var time: Float = 0
-    func update(deltaTime: Float){
-        time += deltaTime
-        
-        
-        self.position.x = cos(time)//updated to cos time,
-        self.position.y = sin(time)
-        self.scale = SIMD3<Float>(0.5*cos(time),0.5*sin(time),1)//scale allong all axis
-        self.rotation.z = cos(time)
-        
+   // var time: Float = 0
+    override func update(deltaTime: Float){
+//        time += deltaTime
+//
+//
+//        self.position.x = cos(time)//updated to cos time,
+//        self.position.y = sin(time)
+//        self.scale = SIMD3<Float>(0.5*cos(time),0.5*sin(time),1)//scale allong all axis
+//        self.rotation.z = cos(time)
+//
         updateModelConstants()
         
     }
@@ -43,5 +43,10 @@ extension GameObject: Renderable{
          //'?' controls whether the object is nil
          renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: mesh.vertexCount)//use triangle - loop around
          //send info to render command encoder
+        
+        //if want to have multiple game objects, can have an array of them, and call render on each one - come in some that not make sense- could render mutliple things and override. If each one has particle effects or other objects that can ovveride.
+        /*
+         if have street scene, will have terrain, street, car. This does not look like array - look likes a tree - called a scene graph - terrain render itself, streeet render itself, car render itself,
+         */
     }
 }

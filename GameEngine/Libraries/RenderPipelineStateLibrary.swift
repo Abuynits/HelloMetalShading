@@ -16,11 +16,12 @@ class RenderPipelineStateLibrary{
 }
 protocol RenderPipelineState{
     var name : String {get}
-    var renderPipelineState : MTLRenderPipelineState {get}
+    var renderPipelineState : MTLRenderPipelineState! {get}
 }
 public struct Basic_Render_Pipeline_State: RenderPipelineState{
     var name: String = "Basic Render Pipeline State"
-    var renderPipelineState: MTLRenderPipelineState{
+    var renderPipelineState: MTLRenderPipelineState!
+    init(){
         //need libary
         
        // let library = Engine.Device.makeDefaultLibrary()
@@ -31,16 +32,16 @@ public struct Basic_Render_Pipeline_State: RenderPipelineState{
        // let vertexFunction = library?.makeFunction(name: "basic_vertex_shader")
        // let fragmentFunction = library?.makeFunction(name: "basic_fragment_shader")
         // now make the pipieline state descriptor
-        let renderPipelineDescriptor = RenderPipelineDescriptorLibrary.descriptor(.Basic)
-        var renderPipelineState: MTLRenderPipelineState!
+        //let renderPipelineDescriptor = RenderPipelineDescriptorLibrary.descriptor(.Basic)
+//        renderPipelineState: MTLRenderPipelineState!
          //create render pipieline state
         do {//init the pipeline state- try the build the renderer
-            renderPipelineState = try Engine.Device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
+            renderPipelineState = try Engine.Device.makeRenderPipelineState(descriptor: RenderPipelineDescriptorLibrary.descriptor(.Basic))
         } catch let error as NSError{
             print("Unable to compile render pipeline state: \(error)")
            
         }
-        return renderPipelineState
+      //  return renderPipelineState
     }
     
 }

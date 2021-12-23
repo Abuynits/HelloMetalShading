@@ -2,7 +2,7 @@ import MetalKit
 class Renderer: NSObject{
 
     //each game object nees to be a node- need to create data structure where we can store many game objects that do not contain a mesh - not describe the node/position aspect of it - just mehs ( shape of object)
-    var player = Player()//can create 2 gametypes of2 different shapes - even calling game object is wierd
+    //can create 2 gametypes of2 different shapes - even calling game object is wierd
 }
 extension Renderer: MTKViewDelegate{
     
@@ -24,15 +24,15 @@ extension Renderer: MTKViewDelegate{
     // paralel command: able to render mutliple things at the same time - if want to render tecture and then turn into another tecture0 write two textures to the screeen.
         //use renderpass descriptor to instantiate comand encoder- renderpassdescriptor -has pixel/ buffer store infor ofr next job
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
-        
-        player.update(deltaTime: 1/Float(view.preferredFramesPerSecond))//return 60fps
+        SceneManager.TickScene(renderCommandEncoder: renderCommandEncoder!, deltaTime: 1/Float(view.preferredFramesPerSecond))
+        //scene.update(deltaTime: 1/Float(view.preferredFramesPerSecond))//return 60fps
         
         //set render command encoder render pipeline state
         //most important thing:
         //holds a lot of info - vertex function, fragment functions, color attachment
         //color attachment - pixel format: colorattachement[0] must match MSView(GameVIew)- need to set to .bgra8Unorm
         //vertex and fragment made with MTL library - it makes these fucntions, then stores in pipline descripton, vertex and fragment live in metal file
-        player.render(renderCommandEncoder: renderCommandEncoder!)
+        //scene.render(renderCommandEncoder: renderCommandEncoder!)
         //need to stop render command encoder:
         renderCommandEncoder?.endEncoding()
         //need to present next drawable to screen

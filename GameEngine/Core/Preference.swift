@@ -10,5 +10,5 @@ class Preference{
     
     public static var clearColor: MTLClearColor = ClearColors.Black
     public static var mainPixelFormat: MTLPixelFormat = MTLPixelFormat.bgra8Unorm
-    
+    public static var StartingSceneTypes: SceneTypes = SceneTypes.Sandbox
 }

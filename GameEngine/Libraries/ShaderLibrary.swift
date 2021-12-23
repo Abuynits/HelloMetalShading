@@ -15,7 +15,7 @@ enum FragmentShaderTypes {//this is a key
 protocol Shader{//use protocol bc will make to extend
     var name: String {get}//"basic vertex  shader"
     var functionName: String {get}//what function name is in shader.metal
-    var function: MTLFunction {get}//this will be the actual function that we will do in vertex descriptor\
+    var function: MTLFunction! {get}//this will be the actual function that we will do in vertex descriptor\
 }
 
 class ShaderLibrary{//library where can grab things - always exist
@@ -46,16 +46,16 @@ class ShaderLibrary{//library where can grab things - always exist
         return fragmentShaderDict[FragmentShaderType]!.function
     }
 }
-
+//everytime call function - we go int ofunction - we grab a function and create it
 public struct Basic_VertexShader: Shader {
 
     public var name: String = "Basic Vertex Shader"
     public var functionName: String = "basic_vertex_shader"
-    public var function: MTLFunction {
+    public var function: MTLFunction!
+    init(){
     //need library to instantiate
-    let function = ShaderLibrary.defaultLibrary.makeFunction(name: functionName)
+     function = ShaderLibrary.defaultLibrary.makeFunction(name: functionName)
         function?.label = name//when pass to gpu, can set label to the name (can be descritive)
-        return function!
     }
     }
 
@@ -63,10 +63,10 @@ public struct Basic_FragmentShader: Shader {
 
     public var name: String = "Basic Fragment Shader"
     public var functionName: String = "basic_fragment_shader"
-    public var function: MTLFunction {
+    public var function: MTLFunction!
+    init() {
     //need library to instantiate
-    let function = ShaderLibrary.defaultLibrary.makeFunction(name: functionName)
+    function = ShaderLibrary.defaultLibrary.makeFunction(name: functionName)
         function?.label = name//when pass to gpu, can set label to the name (can be descritive)
-        return function!
     }
     }
