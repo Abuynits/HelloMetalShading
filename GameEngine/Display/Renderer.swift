@@ -1,12 +1,20 @@
 import MetalKit
 class Renderer: NSObject{
-
+    public static var ScreenSize: SIMD2<Float> = SIMD2<Float>(0)
+    init(_ mtkView: MTKView){
+        super.init()
+        updateScreenSize(view: mtkView)
+    }
+    
     //each game object nees to be a node- need to create data structure where we can store many game objects that do not contain a mesh - not describe the node/position aspect of it - just mehs ( shape of object)
     //can create 2 gametypes of2 different shapes - even calling game object is wierd
 }
 extension Renderer: MTKViewDelegate{
-    
+    public func updateScreenSize(view: MTKView){
+        Renderer.ScreenSize = SIMD2<Float>(Float(view.bounds.width),Float(view.bounds.height))
+    }
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        updateScreenSize(view: view)
         //used when the window is resized
         //helpful when use matrices to change aspect ratio
     }

@@ -24,15 +24,78 @@ class GameView: MTKView{
         
         self.colorPixelFormat = Preference.mainPixelFormat
         
-        self.renderer = Renderer()//delegate all of draw functionalities to renderer class
+        self.renderer = Renderer(self)//delegate all of draw functionalities to renderer class
         
         self.delegate = renderer
         
        
     }
-   //Mouse and keyboard input
-   
-    
+
+    }
+extension GameView{
+    //keyboard input
+     override var acceptsFirstResponder: Bool {return true} //allow to accept key view on the loop
+ //keyboard button - click button down - keydown event
+     override func keyDown(with event: NSEvent) {
+         Keyboard.SetKeyPressed(event.keyCode, isOn: true)
+     }
+     //when release button:
+     override func keyUp(with event: NSEvent) {
+         Keyboard.SetKeyPressed(event.keyCode, isOn: false)
+     }
+ }
+//moue input
+extension GameView{
+    override func mouseDown(with event: NSEvent) {//left button click
+         Mouse.SetMouseButtonPressed(button: event.buttonNumber, isOn: true)
+    }
+    override func mouseUp(with event: NSEvent) {
+         Mouse.SetMouseButtonPressed(button: event.buttonNumber, isOn: false)
+    }
+    override func rightMouseDown(with event: NSEvent) {
+         Mouse.SetMouseButtonPressed(button: event.buttonNumber, isOn: true)
+    }
+    override func rightMouseUp(with event: NSEvent) {//right button click
+         Mouse.SetMouseButtonPressed(button: event.buttonNumber, isOn: false)
+    }
+    override func otherMouseUp(with event: NSEvent) {//if have another button on mouse
+         Mouse.SetMouseButtonPressed(button: event.buttonNumber, isOn: true)
+    }
+    override func otherMouseDown(with event: NSEvent) {
+         Mouse.SetMouseButtonPressed(button: event.buttonNumber, isOn: false)
+    }
+}
+//mouse moved extension
+extension GameView {
+    override func mouseMoved(with event: NSEvent) {
+        setMousePositionChanged(event: event)
+    }
+    override func scrollWheel(with event: NSEvent) {
+         Mouse.ScrollMouse(deltaY: Float(event.deltaY))
+    }
+    override func mouseDragged(with event: NSEvent) {
+         setMousePositionChanged(event: event)
+    }
+    override func rightMouseDragged(with event: NSEvent) {
+         setMousePositionChanged(event: event)
+    }
+    override func otherMouseDragged(with event: NSEvent) {
+         setMousePositionChanged(event: event)
+    }
+    private func setMousePositionChanged(event: NSEvent){//get curernt location in window of mouse, change - how far moved
+        let overallLocation = SIMD2<Float>(Float(event.locationInWindow.x),Float(event.locationInWindow.y))
+        let deltaChange = SIMD2<Float>(Float(event.deltaX),Float(event.deltaY))
+        Mouse.SetMousePositionChange(overallPosition: overallLocation, deltaPosition: deltaChange)
+    }
+    override func updateTrackingAreas(){
+        //called anytime the screen is initialized or resized - set area of screen with tracking area- take bounds of entire screen size, set options of what want to apply, and constantly tracking
+        let area = NSTrackingArea(rect: self.bounds,
+                                  options: [NSTrackingArea.Options.activeAlways,NSTrackingArea.Options.mouseMoved,NSTrackingArea.Options.enabledDuringMouseDrag],
+                                  owner:self,
+                                  userInfo: nil
+        )
+        self.addTrackingArea(area)
+    }
 }
 /*
  theory of moving objects in screen space:
