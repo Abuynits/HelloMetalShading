@@ -10,8 +10,8 @@ class Mouse {
     private static var MOUSE_BUTTON_COUNT = 12//can fill up to
     private static var mouseButtonList = [Bool].init(repeating: false, count: MOUSE_BUTTON_COUNT)
 
-    private static var overallMousePosition = SIMD2<Float>(0)
-    private static var mousePositionDelta = SIMD2<Float>(0)//changes
+    private static var overallMousePosition = SIMD2<Float>(repeating: 0)
+    private static var mousePositionDelta = SIMD2<Float>(repeating: 0)//changes
 
     private static var scrollWheelPosition: Float = 0//mouse scroll position
     private static var lastWheelPosition: Float = 0.0//way to track how much scroll by

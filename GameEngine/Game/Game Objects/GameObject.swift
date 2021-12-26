@@ -33,7 +33,7 @@ extension GameObject: Renderable{
          //set render command encorder's pipeline state:
          //each game object will have a render pipeline state
         //use bytes vs float - not want to make buffer if have value over 4mb- once over that cap, you want to make a buffer - if have a few bytes, can just pass reference -just call renderCommandEncoder.setBytes- set at the index
-        renderCommandEncoder.setVertexBytes(&modelConstant, length: ModelConstants.stride, index: 1)//where place in shader - at buffer 1
+        renderCommandEncoder.setVertexBytes(&modelConstant, length: ModelConstants.stride, index: 2)//where place in shader - at buffer 1
          renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.pipelineState(.Basic))
          /*
           ata

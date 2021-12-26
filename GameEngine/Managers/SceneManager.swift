@@ -16,6 +16,7 @@ class SceneManager{
     }
     //taking the rendering of the scene and replace in scne manager - it take responsibility of updating and rendering the current scene it is on scene.children is terrain - go over and render.
     public static func TickScene(renderCommandEncoder: MTLRenderCommandEncoder, deltaTime: Float){
+        _currentScene.updateCameras(deltaTime: deltaTime)
         _currentScene.update(deltaTime: deltaTime)
         _currentScene.render(renderCommandEncoder: renderCommandEncoder)
     }

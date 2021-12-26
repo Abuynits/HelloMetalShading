@@ -29,3 +29,7 @@ extension Float:sizable{}//float extend sizable
 struct ModelConstants: sizable{
     var modelMatrix = matrix_identity_float4x4
 }
+struct SceneConstants: sizable{
+    var viewMatrix = matrix_identity_float4x4
+    
+}
