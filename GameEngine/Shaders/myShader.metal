@@ -23,6 +23,7 @@ struct modelConstants{
 };
 struct SceneConstants{
     float4x4 viewMatrix;
+    float4x4 projectionMatrix;
 };
 
 //no longer need to take in array of vertices, just vertex
@@ -36,7 +37,7 @@ vertex RasterizerData basic_vertex_shader(const vertexIn vIn [[stage_in]],
     //use another attribute tag - vertex id (tracks the backend vertex id)- instead of hardcoding:
     RasterizerData r;//create rasterizer data object
     
-    r.position=sceneConstants.viewMatrix*modelConstants.modelMatrix * simd_float4(vIn.position,1);//populate position
+    r.position=sceneConstants.projectionMatrix*sceneConstants.viewMatrix*modelConstants.modelMatrix * simd_float4(vIn.position,1);//populate position
     r.color= vIn.color;//add the same atributes - create fragments for each one
     //reasterizer - figure out what color it should be
     //at 0 return ptr of 0, then at 1, and then at 2- called per fragment as opposed to per vertex coding

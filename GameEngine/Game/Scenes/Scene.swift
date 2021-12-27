@@ -29,6 +29,7 @@ class Scene: Node{//backend scene
     
     func updateSceneConstants(){
         sceneConstants.viewMatrix = cameraManager.currentCamera.viewMatrix
+        sceneConstants.projectionMatrix = cameraManager.currentCamera.projectionMatrix 
     }
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {

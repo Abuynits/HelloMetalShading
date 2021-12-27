@@ -31,7 +31,7 @@ public struct Basic_Render_Pipeline_Descriptor: RenderPipelineDescriptor{
       
         renderPipelineDescriptor.vertexDescriptor=VertexDescriptorLibrary.descriptor(.Basic)
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = Preference.mainPixelFormat
-        
+        renderPipelineDescriptor.depthAttachmentPixelFormat = Preference.mainDepthPixelFormat
         renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.Basic)
         renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.Basic)//bc cached
     }

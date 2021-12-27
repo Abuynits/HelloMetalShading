@@ -31,5 +31,5 @@ struct ModelConstants: sizable{
 }
 struct SceneConstants: sizable{
     var viewMatrix = matrix_identity_float4x4
-    
+    var projectionMatrix = matrix_identity_float4x4
 }

@@ -9,7 +9,14 @@ public var Y_AXIS: SIMD3<Float>{
 public var Z_AXIS: SIMD3<Float>{
     return SIMD3<Float>(0,0,1)
 }
-
+extension Float{
+    var toRadians: Float{
+        return (self/180.0)*Float.pi
+    }
+    var toDegrees: Float{
+        return (self*(180.0/Float.pi))
+    }
+}
 extension matrix_float4x4{
     //to do certain operations
     mutating func translate(direction: SIMD3<Float>){
@@ -106,4 +113,29 @@ extension matrix_float4x4{
         //multiple self by result
         self = matrix_multiply(self, result)
     }
+    
+    //https://gamedev.stackexchange.com/questions/120338/what-does-a-perspective-projection-matrix-look-like-in-opengl
+        static func perspective(degreesFov: Float, aspectRatio: Float, near: Float, far: Float)->matrix_float4x4{
+            let fov = degreesFov.toRadians
+            //generates new float 4x4
+            //degreesFov: take a papertowel tube- look down the tube- looked zoomed in bc cut off range ( lower field of view)
+            //aspect ration - anything that you want - a good common is 16 by 9- whatever display you are working on
+            //anything close will be clipped- near value, far value - anythign after the far will also be clipped
+            //units use is near to far - if use 1-100, we have 99 workable units
+            let t: Float = tan(fov / 2)
+            //this is a matrix calculation
+            let x: Float = 1 / (aspectRatio * t)
+            let y: Float = 1 / t
+            let z: Float = -((far + near) / (far - near))
+            let w: Float = -((2 * far * near) / (far - near))
+            
+            var result = matrix_identity_float4x4//return new matrix 4x4
+            result.columns = (
+                SIMD4<Float>(x,  0,  0,   0),
+                SIMD4<Float>(0,  y,  0,   0),
+                SIMD4<Float>(0,  0,  z,  -1),
+                SIMD4<Float>(0,  0,  w,   0)
+            )
+            return result
+        }
 }

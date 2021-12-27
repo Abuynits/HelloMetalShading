@@ -23,12 +23,26 @@ class GameView: MTKView{
       
         
         self.colorPixelFormat = Preference.mainPixelFormat
+        self.depthStencilPixelFormat = Preference.mainDepthPixelFormat
         
         self.renderer = Renderer(self)//delegate all of draw functionalities to renderer class
         
         self.delegate = renderer
         
-       
+       /*
+        perspective projection - things are larger when they are closer and smaller when they are farther away)train tracks)
+        have a near and far cliping plane - everything beyond these planes are not touched - not clipped
+        
+        orthographic projection - things are the same size regardless of what position they are at
+        projective: add depth to the scene
+        
+        
+        local space (original vector position) x world space ( model matrix - rot, tran, scale) x Eye Space(view matrix - camera) x projection matrix (normalized Device Space Coordinates )- new vertex position
+        
+        each one of these matrix arer transformation- projection matrix - objects not move in same distance - move different distances.
+        
+        
+        */
     }
 
     }
